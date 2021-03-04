@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 2021_03_04_171757) do
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
+    t.string "name", null: false
+    t.text "description", null: false
     t.date "started_at"
     t.date "ended_at"
-    t.integer "status", default: 0
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

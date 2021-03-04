@@ -1,3 +1,28 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<h1>Listado de proyectos</h1>
 <%= link_to 'Crear proyecto', projects_new_path%>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Comenzado</th>
+      <th scope="col">Terminado</th>
+       <th scope="col">Estado</th>
+        <th scope="col">Terminado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @projects.each do |project|%>
+      <th><%= project.name%></th>
+      <th><%= project.description%></th>
+      <th><%= project.started_at%></th>
+      <th><%= project.ended_at%></th>
+      <th><%= project.status%></th>
+      <th><%= link_to 'Eliminar', destroy_project_path(project)
+      %></td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
