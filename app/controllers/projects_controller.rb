@@ -1,6 +1,9 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all 
+    if params[:status] and params[:status] != 'all'
+      @projects = @projects.where(status: params[:status])
+    end
   end
 
   def new
@@ -13,6 +16,13 @@ class ProjectsController < ApplicationController
       redirect_to dashboard_path
     else
       render 'new'
+    end
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    if @project.destroy 
+      redirect_to dashboard_path
     end
   end
 
